@@ -1,0 +1,3 @@
+SELECT RESOLUTION AS'Группа', SIFR AS 'Шифр', NAME AS 'Имя', CODE AS 'Имя', NETNAME AS'Сетевое имя'
+FROM CASHES
+ORDER by RESOLUTION
