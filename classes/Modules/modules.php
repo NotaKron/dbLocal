@@ -72,7 +72,7 @@ echo "</table>";
     function printRows($nameColumn){
         foreach ($this->_res as $key=>$value)
         {
-            echo "Строка №: $this->countRow";
+            echo "Это строка №: $this->countRow ";
             print_r($value);
             echo '<br>';
             $this->countRow++;
