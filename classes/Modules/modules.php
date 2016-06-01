@@ -14,9 +14,13 @@
 class Modules {
     private $_res;
     private $countRow;
-    function __construct($res) {
+    private $query;
+    private $arrayFilteredColumns;
+    function __construct($res,$query) {
      $this->_res=$res;
      $this->countRow=0;
+     $this->query=$query;
+     $this->arrayFilteredColumns =$this->getFilteredColumns();  
     }
     //put your code here
     function printTable($res){
@@ -64,10 +68,10 @@ echo "</table>";
         $_tmpkey=  array_keys($_tmp);
         print_r($_tmpkey);
     } 
-    function  getFilteredColumns($query)
+    private function  getFilteredColumns()
     {
-        preg_match_all('/\"(.*?)\"/sei', $query,$matches);
-        print_r($matches[1]);
+        preg_match_all('/\"(.*?)\"/sei', $this->query,$matches);
+        return $matches[1];
     }
     function printRows($nameColumn){
         foreach ($this->_res as $key=>$value)
@@ -81,6 +85,10 @@ echo "</table>";
     private function parceRow($row)
     {
       #  $filtColumn=  $this->getFilteredColumns(f)
+    }
+    function test()
+    {
+        print_r($this->arrayFilteredColumns);
     }
            
 }

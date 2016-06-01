@@ -54,5 +54,5 @@ if ($con!=NULL){
 $res=$con->getResult($query);
 }
 require './Modules/modules.php';
-$modul= new Modules($res);
-$modul->printRows("dsdsds");
+$modul= new Modules($res,$query);
+$modul->test();
