@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="Проверка">
+    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Modules/modules.php" afterPath="$PROJECT_DIR$/classes/Modules/modules.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/runClass.php" afterPath="$PROJECT_DIR$/classes/runClass.php" />
     </list>
     <ignored path="dbProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -250,7 +248,7 @@
       <workItem from="1464759850869" duration="5373000" />
       <workItem from="1464776512140" duration="3628000" />
       <workItem from="1465283598539" duration="947000" />
-      <workItem from="1465387160699" duration="2426000" />
+      <workItem from="1465387160699" duration="2479000" />
     </task>
     <task id="LOCAL-00001" summary="Проверка">
       <created>1463747367082</created>
@@ -266,11 +264,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464765984457</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Проверка">
+      <created>1465389619064</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1465389619064</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14102000" />
+    <option name="totallyTimeSpent" value="14155000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
