@@ -13,7 +13,7 @@
  */
 class Modules {
     private $_res;
-    private $countRow;
+    private $countRow=0;
     private $query;
     private $arrayFilteredColumns;
     private $arrayDefaultValues;
@@ -49,7 +49,12 @@ class Modules {
         echo "</table>";
     }
     private function filteredArray($columnName,$value){
-        //
+        if($value!=key($this->arrayDefaultValues[$columnName]))
+        {
+            $uniqArray=$this->countRepeats($columnName,$value);
+            print_r($uniqArray);
+        }
+
     }
     function getTableHeaders(){
         $_tmp=$this->_res[0];
@@ -65,6 +70,7 @@ class Modules {
         foreach ($this->_res as $key=>$value)
         {
             $this->parceRow($value);
+            $this->countRow++;
         }
     }
     private function parceRow($row)
@@ -79,7 +85,13 @@ class Modules {
     }
     function test()
     {
-        $this->printRows();
+        $count=count($this->_res);
+    for($i=0;$i<$count;++$i)
+    {
+        echo 'Stroka # '.$i;
+        print_r($this->_res[$i]['ORDER_CATEGORY']);
+        echo '<br>';
+    }
     }
     private function filteredColumns($columnName,$cell){
         $sizeArray=count($this->arrayFilteredColumns);
@@ -96,8 +108,13 @@ class Modules {
         }
         return $this->arrayDefault;
     }
-    private function countRepeats($columnName){
-        $count=0;
+    private function countRepeats($columnName,$valueCell){
+
+       for ($i=$this->countRow;i<count($this->_res);++$i)
+       {
+
+       }
+        /*$count=0;
         $uniqString=NULL;
         foreach ($this->_res as $key=>$value){
             if($uniqString==$value[$columnName] )
@@ -111,6 +128,6 @@ class Modules {
             } else {
                 $uniqString=$value[$columnName];
             }
-        }
+        }*/
     }
 }
