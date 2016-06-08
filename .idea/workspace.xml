@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/table.html" />
+    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="Проверка">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Modules/modules.php" afterPath="$PROJECT_DIR$/classes/Modules/modules.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/runClass.php" afterPath="$PROJECT_DIR$/classes/runClass.php" />
@@ -37,32 +36,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="runClass.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="runClass.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/runClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+            <state relative-caret-position="170">
+              <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
               <folding>
-                <marker date="1464765938123" expanded="false" signature="430:2658" ph="SELECT GLOBA... PAYBINDINGS" />
+                <marker date="1464779209694" expanded="false" signature="430:2602" ph="SELECT UNCHA... PAYBINDINGS" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modules.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modules.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="714">
+              <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
               <folding>
+                <element signature="n#__construct#0;n#Modules#0;n#!!top" expanded="false" />
                 <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
-                <element signature="e#731#800#0#PHP" expanded="false" />
-                <element signature="e#815#1119#0#PHP" expanded="false" />
-                <element signature="n#filteredArray#0;n#Modules#0;n#!!top" expanded="false" />
+                <element signature="e#862#946#0#PHP" expanded="false" />
+                <element signature="e#977#1346#0#PHP" expanded="false" />
                 <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
-                <element signature="n#getFilteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+                <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
                 <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
-                <element signature="n#parceRow#0;n#Modules#0;n#!!top" expanded="false" />
+                <element signature="n#filteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+                <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -86,8 +86,8 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/table.html" />
-        <option value="$PROJECT_DIR$/classes/Modules/modules.php" />
         <option value="$PROJECT_DIR$/classes/runClass.php" />
+        <option value="$PROJECT_DIR$/classes/Modules/modules.php" />
       </list>
     </option>
   </component>
@@ -137,7 +137,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -191,6 +190,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -247,7 +247,10 @@
       <updated>1453102111475</updated>
       <workItem from="1463745739623" duration="1664000" />
       <workItem from="1464759711271" duration="64000" />
-      <workItem from="1464759850869" duration="2703000" />
+      <workItem from="1464759850869" duration="5373000" />
+      <workItem from="1464776512140" duration="3628000" />
+      <workItem from="1465283598539" duration="947000" />
+      <workItem from="1465387160699" duration="2426000" />
     </task>
     <task id="LOCAL-00001" summary="Проверка">
       <created>1463747367082</created>
@@ -256,18 +259,34 @@
       <option name="project" value="LOCAL" />
       <updated>1463747367082</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Проверка">
+      <created>1464765984457</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1464765984457</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4431000" />
+    <option name="totallyTimeSpent" value="14102000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18869936" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19509594" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -277,11 +296,12 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -302,11 +322,119 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/runClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1464779209694" expanded="false" signature="430:2602" ph="SELECT UNCHA... PAYBINDINGS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+          <folding>
+            <element signature="n#__construct#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="e#862#946#0#PHP" expanded="false" />
+            <element signature="e#977#1346#0#PHP" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#filteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/runClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="56" column="14" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+          <folding>
+            <marker date="1464779209694" expanded="false" signature="430:2602" ph="SELECT UNCHA... PAYBINDINGS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#__construct#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="e#862#946#0#PHP" expanded="false" />
+            <element signature="e#977#1346#0#PHP" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#filteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/runClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <folding>
+            <marker date="1464779209694" expanded="false" signature="430:2602" ph="SELECT UNCHA... PAYBINDINGS" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#__construct#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="e#862#946#0#PHP" expanded="false" />
+            <element signature="e#977#1346#0#PHP" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#filteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/table.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -365,29 +493,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
+    <entry file="file://$PROJECT_DIR$/classes/runClass.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
           <folding>
-            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
-            <element signature="e#731#800#0#PHP" expanded="false" />
-            <element signature="e#815#1119#0#PHP" expanded="false" />
-            <element signature="n#filteredArray#0;n#Modules#0;n#!!top" expanded="false" />
-            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
-            <element signature="n#getFilteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
-            <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
-            <element signature="n#parceRow#0;n#Modules#0;n#!!top" expanded="false" />
+            <marker date="1464779209694" expanded="false" signature="430:2602" ph="SELECT UNCHA... PAYBINDINGS" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/runClass.php">
+    <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="57" column="14" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="14" />
+        <state relative-caret-position="714">
+          <caret line="95" column="9" selection-start-line="95" selection-start-column="9" selection-end-line="95" selection-end-column="9" />
           <folding>
-            <marker date="1464765938123" expanded="false" signature="430:2658" ph="SELECT GLOBA... PAYBINDINGS" />
+            <element signature="n#__construct#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="e#862#946#0#PHP" expanded="false" />
+            <element signature="e#977#1346#0#PHP" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#printRows#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#filteredColumns#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
