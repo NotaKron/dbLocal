@@ -40,7 +40,7 @@ class Modules
         }
         echo '</tr>';
 
-       $this->printRows();
+        $this->printRows();
 
         echo "</table>";
     }
@@ -70,7 +70,7 @@ class Modules
     function printRows()
     {
         foreach ($this->_res as $key => $value) {
-           $this->countRow++;
+            $this->countRow++;
             echo "<tr>";
             echo $this->parceRow($value);
             echo "</tr>";
@@ -80,28 +80,31 @@ class Modules
 
     private function parceRow($row)
     {
-        $stringTr=null;
+        $stringTr = null;
         foreach ($row as $cell => $key) {
             $keyRow = array_search($key, $row);
             if (in_array($keyRow, $this->arrayFilteredColumns)) {
-                $stringTr=$stringTr.$this->checkRepeat($keyRow,$key);
-            } else $stringTr=$stringTr."<td>".$key."</td>";
+                $stringTr = $stringTr . $this->checkRepeat($keyRow, $key);
+            } else $stringTr = $stringTr . "<td>" . $key . "</td>";
         }
         return $stringTr;
     }
 
     function test()
     {
- $this->printTable($this->_res);
+        //$this->printTable($this->_res);
+        print_r($this->getPredCount('ORDER_CATEGORY'));
 
 
     }
-    private function checkRepeat($columnName,$key){
-               if ($key!=key($this->arrayDefaultValues[$columnName])){
-            return $this->countRepeats($columnName,$key);
-        }
-        else return '';
+
+    private function checkRepeat($columnName, $key)
+    {
+        if ($key != key($this->arrayDefaultValues[$columnName])) {
+            return $this->countRepeats($columnName, $key);
+        } else return '';
     }
+
     private function filteredColumns($columnName, $cell)
     {
         $sizeArray = count($this->arrayFilteredColumns);
@@ -123,6 +126,9 @@ class Modules
 
     private function countRepeats($columnName, $valueCell)
     {
+        $prevValue = key($this->arrayDefaultValues[$columnName]);
+        $prevCount = $this->arrayDefaultValues[$columnName][$prevValue] + $this->countRow;
+        if (0 != $prevCount) $prevCount--;
         $count = 0;
         for ($i = $this->countRow; $i < count($this->_res); ++$i) {
             if ($valueCell == $this->_res[$i][$columnName]) {
@@ -130,8 +136,22 @@ class Modules
             } else  break;
         }
         $count++;
-        $this->arrayDefaultValues[$columnName]=[$valueCell=>$count];
-        return "<td valign='top' rowspan=\"$count\">$valueCell </td>" ;
+        $this->arrayDefaultValues[$columnName] = [$valueCell => $count];
+        return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+    }
+
+    private function getPredCount($columnName)
+    {
+        $index = Null;
+        foreach ($this->arrayDefaultValues as $key => $value) {
+            if ($columnName != $key) {
+                               $index = current($value);
+
+            } else {
+                     return $index;
+            }
+        }
+        return $index;
     }
 
 }
