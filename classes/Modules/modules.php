@@ -70,11 +70,11 @@ class Modules
     function printRows()
     {
         foreach ($this->_res as $key => $value) {
-            $this->countRow++;
+
             echo "<tr>";
             echo $this->parceRow($value);
             echo "</tr>";
-
+            $this->countRow++;
         }
     }
 
@@ -84,7 +84,7 @@ class Modules
         foreach ($row as $cell => $key) {
             $keyRow = array_search($key, $row);
             if (in_array($keyRow, $this->arrayFilteredColumns)) {
-                $stringTr = $stringTr . $this->checkRepeat($keyRow, $key);
+                $stringTr = $stringTr . $this->checkRepeat($keyRow, $row);
             } else $stringTr = $stringTr . "<td>" . $key . "</td>";
         }
         return $stringTr;
@@ -92,17 +92,32 @@ class Modules
 
     function test()
     {
-        //$this->printTable($this->_res);
-        print_r($this->getPredCount('ORDER_CATEGORY'));
-
+        $this->printTable($this->_res);
+        /*
+                $this->arrayDefaultValues['First']=['first'=>11];
+                $this->arrayDefaultValues['Second']=['second'=>22];
+                $this->arrayDefaultValues['Third']=['third'=>33];
+            foreach ($this->_res as $key =>$valye) {
+                echo($valye['ORDER_CATEGORY']);
+                echo '<br>';
+                }*/
+//        echo(current($this->arrayDefaultValues[$this->getPredCount('Second')]));
+//        echo '<br> perenos';
+//        echo prev($this->arrayDefaultValues['Second']);
 
     }
 
-    private function checkRepeat($columnName, $key)
+    private function checkRepeat($columnName, $row)
     {
-        if ($key != key($this->arrayDefaultValues[$columnName])) {
-            return $this->countRepeats($columnName, $key);
-        } else return '';
+        $key = $row[$columnName];
+        $predColumn=$this->getPredCount($columnName);
+        $predKey=$row[$predColumn];
+        if (($key != key($this->arrayDefaultValues[$columnName]))) {
+            return $this->countRepeats($columnName, $row);
+        } else if($predKey!=$this->arrayDefaultValues[$columnName][$key])
+            return $this->countRepeats($columnName, $row);
+        else
+            return '';
     }
 
     private function filteredColumns($columnName, $cell)
@@ -124,34 +139,73 @@ class Modules
         return $this->arrayDefault;
     }
 
-    private function countRepeats($columnName, $valueCell)
+    private function countRepeats($columnName,$row )
     {
+        $valueCell = $row[$columnName];
+        $predColumn=$this->getPredCount($columnName);
+        $predKey=$row[$predColumn];
         $prevValue = key($this->arrayDefaultValues[$columnName]);
-        $prevCount = $this->arrayDefaultValues[$columnName][$prevValue] + $this->countRow;
-        if (0 != $prevCount) $prevCount--;
+        $prevCount = $this->arrayDefaultValues[$columnName][$prevValue];
+        //  if (0 != $prevCount) $prevCount--;
         $count = 0;
         for ($i = $this->countRow; $i < count($this->_res); ++$i) {
-            if ($valueCell == $this->_res[$i][$columnName]) {
+            if (($valueCell == $this->_res[$i][$columnName]) and ($predKey==$this->_res[$i][$predColumn] )) {
                 $count++;
-            } else  break;
+                $this->arrayDefaultValues[$columnName] = [$valueCell => ($count + $prevCount)];
+            } else  {
+              // $this->zeroArrayDefaultValues($columnName);
+                break;
+            }
         }
-        $count++;
-        $this->arrayDefaultValues[$columnName] = [$valueCell => $count];
+        $this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
         return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
     }
 
     private function getPredCount($columnName)
     {
-        $index = Null;
+        $index = $columnName;
         foreach ($this->arrayDefaultValues as $key => $value) {
             if ($columnName != $key) {
-                               $index = current($value);
+                $index = $key;
 
             } else {
-                     return $index;
+                return $index;
             }
         }
         return $index;
     }
+
+    private function checkCount($startKey, $count)
+    {
+        $prevValue = key($this->arrayDefaultValues[$startKey]);
+        $prevCount = $this->arrayDefaultValues[$startKey][$prevValue];
+        $summ = $count + $prevCount;
+        $check = current($this->arrayDefaultValues[$this->getPredCount($startKey)]);
+        foreach ($this->arrayDefaultValues as $key => $value) {
+            if ($this->countRow >= current($value)) {
+                $this->zeroArrayDefaultValues($key);
+            }
+
+        }
+    }
+
+    private function zeroArrayDefaultValues($startKey)
+    {
+
+        for ($i = 0; $i < count($this->arrayDefaultValues); $i++) {
+            if ($startKey == key($this->arrayDefaultValues))
+                for ($k = $i; $k < count($this->arrayDefaultValues);++ $k) {
+                    $this->arrayDefaultValues[key($this->arrayDefaultValues)] = ['default' => 0];
+                    next($this->arrayDefaultValues);
+                }
+            else next($this->arrayDefaultValues);
+        }
+        /* echo "Stroka $i: ";
+         print_r(key($this->arrayDefaultValues));
+         next($this->arrayDefaultValues);
+         echo '<br>';*/
+
+    }
+
 
 }
