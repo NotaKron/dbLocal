@@ -53,5 +53,7 @@ if ($con!=NULL){
 $res=$con->getResult($query);
 }
 require './Modules/modules.php';
-$modul= new Modules($res,$query);
+require './Modules/tableArray.php';
+//$modul= new Modules($res,$query);
+$modul= new tableArray($res,$query);
 $modul->test();

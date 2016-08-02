@@ -146,19 +146,21 @@ class Modules
         $predKey=$row[$predColumn];
         $prevValue = key($this->arrayDefaultValues[$columnName]);
         $prevCount = $this->arrayDefaultValues[$columnName][$prevValue];
-        //  if (0 != $prevCount) $prevCount--;
-        $count = 0;
+                $count = 0;
         for ($i = $this->countRow; $i < count($this->_res); ++$i) {
             if (($valueCell == $this->_res[$i][$columnName]) and ($predKey==$this->_res[$i][$predColumn] )) {
                 $count++;
-                $this->arrayDefaultValues[$columnName] = [$valueCell => ($count + $prevCount)];
-            } else  {
-              // $this->zeroArrayDefaultValues($columnName);
-                break;
+                  } else  {
+                   break;
             }
         }
+        if($this->arrayDefaultValues[$columnName]!='default'){
         $this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
-        return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+        return "<td valign='top' rowspan=\"$count\">$valueCell </td>";}
+        else {
+            $this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
+            return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+        }
     }
 
     private function getPredCount($columnName)
