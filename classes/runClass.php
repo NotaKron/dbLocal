@@ -13,7 +13,7 @@
  */
 
 require './DbWork/MsSQL.classes.php';
-$con = new MsSQL('Password=sa;Persist Security Info=True;User ID=sa;Initial Catalog=RK7_SQL;Data Source=DESKTOP-QS8D9HD\SQLNOUT;');
+$con = new MsSQL('Password=sa;Persist Security Info=True;User ID=sa;Initial Catalog=RK7_SQL;Data Source=ADMINDB-ПК\SQLDB;');
 $query='SELECT
 UNCHANGEABLEORDERTYPES00.NAME AS "ORDER_CATEGORY",
 CURRENCIES00.NAME AS "CURRENCY",
@@ -54,6 +54,6 @@ $res=$con->getResult($query);
 }
 require './Modules/modules.php';
 require './Modules/tableArray.php';
-//$modul= new Modules($res,$query);
-$modul= new tableArray($res,$query);
+$modul= new Modules($res,$query);
+//$modul= new tableArray($res,$query);
 $modul->test();
