@@ -54,5 +54,6 @@ class tableArray
     {
         $this->getDefaultArray();
         print_r($this->_arrayDefaultValues);
+        prin_r("sdsdsd");
     }
 }
