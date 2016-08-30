@@ -31,14 +31,15 @@ class tableArray
 
     private function getContentArray()
     {
+
         $content["count"] = 0;
-        $content["predValue"] = 0;
+        $content["previousValue"] = 0;
         foreach ($this->_headers as $key) {
             if (!(in_array($key, $this->_arrayFilteredColumns))) {
                 $content[$key] = 0;
             }
         }
-        return $content;
+        return $contentarr = ['default' => $content];
     }
 
     private function getDefaultArray()
@@ -54,6 +55,13 @@ class tableArray
     {
         $this->getDefaultArray();
         print_r($this->_arrayDefaultValues);
+        echo '<br>__________________________________________________________________________<br>';
+            print_r($this->_headers);
+        foreach ($this->_arrayDefaultValues as $key =>$value)
+            echo "$key <br>";
+      //  }
+
+
     }
 
     private function printRows()
@@ -77,11 +85,58 @@ class tableArray
 
     private function checkRepeat($columnName, $row)
     {
-        //
+        $key = $row[$columnName];
+        $previousColumn = $this->getPreviousCount($columnName);
+        $previousKey = $row[$previousColumn];
+         if($key!=key($this->_arrayDefaultValues[$columnName])){
+             $this->countRepeats($columnName,$row);
+         }else if($previousKey!=key($this->_arrayDefaultValues[$columnName])){
+             $this->countRepeats($columnName,$row);
+         }
     }
 
-    private function summCells($row)
+    private function countRepeats($columnName, $row)
     {
+        $valueCell = $row[$columnName];
+        $predColumn = $this->getPredCount($columnName);
+        $predKey = $row[$predColumn];
+        $prevValue = key($this->arrayDefaultValues[$columnName]);
+        $prevCount = $this->arrayDefaultValues[$columnName][$prevValue];
+        $count = 0;
+        $content=null;
+        for ($i = $this->countRow; $i < count($this->_res); ++$i) {
+            if (($valueCell == $this->_res[$i][$columnName]) and ($predKey == $this->_res[$i][$predColumn])) {
+                $this->summCells($this->_res[i],$columnName);
+                $count++;
+            } else {
+                break;
+            }
+        }
+        if ($this->arrayDefaultValues[$columnName] != 'default') {
+            $this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
+            return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+        } else {
+            $this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
+            return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+        }
+    }
 
+    private function summCells($row,$columnName)
+    {
+//
+    }
+
+    private function getPreviousCount($columnName)
+    {
+        $index = $columnName;
+        foreach ($this->arrayDefaultValues as $key => $value) {
+            if ($columnName != $key) {
+                $index = $key;
+
+            } else {
+                return $index;
+            }
+        }
+        return $index;
     }
 }
