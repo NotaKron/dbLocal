@@ -13,6 +13,7 @@ class tableArray
     private $_arrayFilteredColumns;
     private $_arrayDefaultValues;
     private $_headers;
+    private $_count = 0;
 
     function __construct($res, $query)
     {
@@ -30,12 +31,11 @@ class tableArray
 
     private function getContentArray()
     {
-        $content["count"]=0;
-        $content["predValue"]=0;
-        foreach ($this->_headers as $key)
-        {
-            if(!(in_array($key,$this->_arrayFilteredColumns))){
-                $content[$key]=0;
+        $content["count"] = 0;
+        $content["predValue"] = 0;
+        foreach ($this->_headers as $key) {
+            if (!(in_array($key, $this->_arrayFilteredColumns))) {
+                $content[$key] = 0;
             }
         }
         return $content;
@@ -46,7 +46,7 @@ class tableArray
 
         foreach ($this->_headers as $key) {
             if (in_array($key, $this->_arrayFilteredColumns))
-               $this->_arrayDefaultValues[$key]=$this->getContentArray();
+                $this->_arrayDefaultValues[$key] = $this->getContentArray();
         }
     }
 
@@ -54,5 +54,34 @@ class tableArray
     {
         $this->getDefaultArray();
         print_r($this->_arrayDefaultValues);
+    }
+
+    private function printRows()
+    {
+        foreach ($this->_res as $key => $value) {
+            $this->parceRow($value);
+            $this->_count++;
         }
+
+    }
+
+    private function parceRow($row)
+    {
+        foreach ($row as $cell => $key) {
+            $keyCell = array_search($key, $row);
+            if (in_array($keyCell, $this->_arrayFilteredColumns)) {
+                $this->checkRepeat($keyCell, $row);
+            }
+        }
+    }
+
+    private function checkRepeat($columnName, $row)
+    {
+        //
+    }
+
+    private function summCells($row)
+    {
+
+    }
 }
