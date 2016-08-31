@@ -34,12 +34,8 @@ class tableArray
 
         $content["count"] = 0;
         $content["previousValue"] = 0;
-        foreach ($this->_headers as $key) {
-            if (!(in_array($key, $this->_arrayFilteredColumns))) {
-                $content[$key] = 0;
-            }
-        }
-        return $contentarr = ['default' => $content];
+        $uniqContent=$this->getUniqContent();
+        return $contentarr = ['default' => array_merge($content,$uniqContent)];
     }
 
     private function getDefaultArray()
@@ -54,9 +50,16 @@ class tableArray
     public function test()
     {
         $this->getDefaultArray();
-        $this->printRows();
         print_r($this->_arrayDefaultValues);
-        echo '<br>__________________________________________________________________________<br>';
+        echo"<br>________________________________________________________________________________________________________<br>";
+        $this->printRows();
+        $i=1;
+      foreach ($this->_arrayDefaultValues as $value){
+          echo "$i: ";
+          print_r($value);
+          echo"<br>";
+          $i++;
+      }
 
 
     }
@@ -98,37 +101,33 @@ class tableArray
         $predColumn = $this->getPreviousCount($columnName);
         $predKey = $row[$predColumn];
         $count = 0;
-        $array=$this->getContentArray();
-
-            print_r($array);
+        $content=$this->getUniqContent();
             for ($i = $this->countRow; $i < count($this->_res); ++$i) {
                 if (($valueCell == $this->_res[$i][$columnName]) and ($predKey == $this->_res[$i][$predColumn])) {
-                    $content = $this->summCells($this->_res[$i], $array);
+                    $content = $this->summCells($this->_res[$i],  $content);
                     $count++;
                 } else {
                     break;
                 }
             }
-            //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
-            //   $this->fillContent($valueCell, $count, $predKey, $content);
-            //$this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
-            //return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-            /*   } else {
-                   $this->fillContent($valueCell, $count, $predKey, $content);
-                   //$this->arrayDefaultValues[$columnName] = [$valueCell => $predKey];
-                   //return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-               }*/
-            // print_r($content);
-            echo "<br>";
+           if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
+                                $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
+
+              } else {
+
+                 $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
+
+               }
+
+
         }
 
 
     private function summCells($row, $content)
     {
-        foreach ($this->_headers as $key) {
-            if (in_array($key, $this->_arrayFilteredColumns))
-            $content[$key] = $content[$key] + $row[$key];
-        }
+       foreach ($content as $key=>$value) {
+           $content[$key]=$value+$row[$key];
+       }
           return $content;
     }
     private function getPreviousCount($columnName)
@@ -145,14 +144,23 @@ class tableArray
         return $index;
     }
 
-    private
-    function fillContent($value, $count, $previousValue, $content)
+    private function fillContent($value, $count, $previousValue, $content, $columnName)
     {
+
         $contentArray["count"] = $count;
         $contentArray["previousValue"] = $previousValue;
         foreach ($content as $key => $value) {
             $contentArray[$key] = $value;
         }
-        $this->_arrayDefaultValues = [$value => $contentArray];
+        $tmpArray[$columnName ]=[$value => $contentArray];
+        array_push($this->_arrayDefaultValues,$tmpArray);
+    }
+    private function getUniqContent(){
+        foreach ($this->_headers as $key) {
+            if (!(in_array($key, $this->_arrayFilteredColumns))) {
+                $content[$key] = 0;
+            }
+        }
+    return $content;
     }
 }
