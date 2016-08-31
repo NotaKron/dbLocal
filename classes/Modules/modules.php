@@ -92,7 +92,8 @@ class Modules
 
     function test()
     {
-        $this->printTable($this->_res);
+       print_r(key($this->arrayDefaultValues["ORDER_CATEGORY"]));
+        // $this->printTable($this->_res);
         /*
                 $this->arrayDefaultValues['First']=['first'=>11];
                 $this->arrayDefaultValues['Second']=['second'=>22];
