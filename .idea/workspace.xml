@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Modules/tableArray.php" afterPath="$PROJECT_DIR$/classes/Modules/tableArray.php" />
     </list>
     <ignored path="dbProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +26,15 @@
             <file leaf-file-name="modules.php" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="582">
-                    <caret line="109" column="72" selection-start-line="109" selection-start-column="72" selection-end-line="109" selection-end-column="72" />
+                  <state relative-caret-position="325">
+                    <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
                     <folding>
+                      <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+                      <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
                       <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+                      <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+                      <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+                      <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
                       <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
                     </folding>
                   </state>
@@ -71,7 +77,7 @@
       <file leaf-file-name="MsSQL.classes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/DbWork/MsSQL.classes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
+            <state relative-caret-position="442">
               <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
               <folding>
                 <element signature="n#getConnectionString#0;n#MsSQL#0;n#!!top" expanded="false" />
@@ -93,8 +99,8 @@
       <file leaf-file-name="tableArray.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/Modules/tableArray.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+            <state relative-caret-position="-806">
+              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="n#__construct#0;n#tableArray#0;n#!!top" expanded="false" />
                 <element signature="n#getFilteredColumnsArray#0;n#tableArray#0;n#!!top" expanded="false" />
@@ -103,12 +109,11 @@
                 <element signature="e#966#1150#0#PHP" expanded="false" />
                 <element signature="n#printTable#0;n#tableArray#0;n#!!top" expanded="false" />
                 <element signature="n#printRows#0;n#tableArray#0;n#!!top" expanded="false" />
-                <element signature="n#parceRow#0;n#tableArray#0;n#!!top" expanded="false" />
                 <element signature="n#summCells#0;n#tableArray#0;n#!!top" expanded="false" />
                 <element signature="n#getPreviousCount#0;n#tableArray#0;n#!!top" expanded="false" />
-                <element signature="n#fillContent#0;n#tableArray#0;n#!!top" expanded="false" />
                 <element signature="n#getUniqContent#0;n#tableArray#0;n#!!top" expanded="false" />
-                <marker date="1472798477323" expanded="true" signature="2433:2501" ph="..." />
+                <marker date="1472823246114" expanded="true" signature="2248:2378" ph="..." />
+                <marker date="1472823246114" expanded="true" signature="2604:2678" ph="..." />
               </folding>
             </state>
           </provider>
@@ -135,8 +140,8 @@
         <option value="$PROJECT_DIR$/table.html" />
         <option value="$PROJECT_DIR$/classes/config/config.ini" />
         <option value="$PROJECT_DIR$/classes/DbWork/MsSQL.classes.php" />
-        <option value="$PROJECT_DIR$/classes/Modules/modules.php" />
         <option value="$PROJECT_DIR$/classes/runClass.php" />
+        <option value="$PROJECT_DIR$/classes/Modules/modules.php" />
         <option value="$PROJECT_DIR$/classes/Modules/tableArray.php" />
       </list>
     </option>
@@ -187,6 +192,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -257,8 +264,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -359,7 +364,8 @@
       <workItem from="1472471963741" duration="2575000" />
       <workItem from="1472533464125" duration="14050000" />
       <workItem from="1472622980346" duration="16408000" />
-      <workItem from="1472793395931" duration="5187000" />
+      <workItem from="1472793395931" duration="5553000" />
+      <workItem from="1472820666966" duration="2590000" />
     </task>
     <task id="LOCAL-00001" summary="Проверка">
       <created>1463747367082</created>
@@ -473,11 +479,18 @@
       <option name="project" value="LOCAL" />
       <updated>1472798642252</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Неполучается таблица">
+      <created>1472798650495</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1472798650495</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107349000" />
+    <option name="totallyTimeSpent" value="110305000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -569,7 +582,12 @@
         <state relative-caret-position="646">
           <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -587,12 +605,11 @@
             <element signature="e#966#1150#0#PHP" expanded="false" />
             <element signature="n#printTable#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#printRows#0;n#tableArray#0;n#!!top" expanded="false" />
-            <element signature="n#parceRow#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#summCells#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#getPreviousCount#0;n#tableArray#0;n#!!top" expanded="false" />
-            <element signature="n#fillContent#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#getUniqContent#0;n#tableArray#0;n#!!top" expanded="false" />
-            <marker date="1472798477323" expanded="true" signature="2433:2501" ph="..." />
+            <marker date="1472823246114" expanded="true" signature="2248:2378" ph="..." />
+            <marker date="1472823246114" expanded="true" signature="2604:2678" ph="..." />
           </folding>
         </state>
       </provider>
@@ -620,7 +637,12 @@
         <state relative-caret-position="1887">
           <caret line="158" column="68" selection-start-line="158" selection-start-column="68" selection-end-line="158" selection-end-column="68" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -649,7 +671,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -678,7 +705,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -707,7 +739,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -754,7 +791,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -783,7 +825,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -820,7 +867,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -849,7 +901,12 @@
         <state relative-caret-position="595">
           <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -878,7 +935,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -907,7 +969,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -981,7 +1048,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/DbWork/MsSQL.classes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
+        <state relative-caret-position="442">
           <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
           <folding>
             <element signature="n#getConnectionString#0;n#MsSQL#0;n#!!top" expanded="false" />
@@ -1001,10 +1068,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/Modules/modules.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="109" column="72" selection-start-line="109" selection-start-column="72" selection-end-line="109" selection-end-column="72" />
+        <state relative-caret-position="325">
+          <caret line="65" column="11" selection-start-line="65" selection-start-column="11" selection-end-line="65" selection-end-column="11" />
           <folding>
+            <element signature="n#printTable#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getTableHeaders#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#checkRepeat#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#getDefaultArray#0;n#Modules#0;n#!!top" expanded="false" />
+            <element signature="n#countRepeats#0;n#Modules#0;n#!!top" expanded="false" />
             <element signature="n#getPredCount#0;n#Modules#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -1012,8 +1084,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/Modules/tableArray.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="116" column="22" selection-start-line="116" selection-start-column="22" selection-end-line="116" selection-end-column="22" />
+        <state relative-caret-position="-806">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="n#__construct#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#tableArray#0;n#!!top" expanded="false" />
@@ -1022,12 +1094,11 @@
             <element signature="e#966#1150#0#PHP" expanded="false" />
             <element signature="n#printTable#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#printRows#0;n#tableArray#0;n#!!top" expanded="false" />
-            <element signature="n#parceRow#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#summCells#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#getPreviousCount#0;n#tableArray#0;n#!!top" expanded="false" />
-            <element signature="n#fillContent#0;n#tableArray#0;n#!!top" expanded="false" />
             <element signature="n#getUniqContent#0;n#tableArray#0;n#!!top" expanded="false" />
-            <marker date="1472798477323" expanded="true" signature="2433:2501" ph="..." />
+            <marker date="1472823246114" expanded="true" signature="2248:2378" ph="..." />
+            <marker date="1472823246114" expanded="true" signature="2604:2678" ph="..." />
           </folding>
         </state>
       </provider>
