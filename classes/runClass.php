@@ -47,7 +47,7 @@ LEFT JOIN CLASSIFICATORGROUPS CLASSIFICATORGROUPS0001
   JOIN PrintChecks PrintChecks00
   ON (PrintChecks00.Visit = CurrLines00.Visit) AND (PrintChecks00.MidServer = CurrLines00.MidServer) AND (PrintChecks00.UNI = CurrLines00.CheckUNI)
   WHERE
-  ((PrintChecks00.STATE = 6) AND(GLOBALSHIFTS00.SHIFTDATE BETWEEN \'20101215\' AND \'20101218\' ) )
+  ((PrintChecks00.STATE = 6) AND(GLOBALSHIFTS00.SHIFTDATE BETWEEN \'20160815\' AND \'20160818\' ) )
   ORDER BY  ORDER_CATEGORY,CURRENCY,Cash';
 if ($con!=NULL){
 $res=$con->getResult($query);
