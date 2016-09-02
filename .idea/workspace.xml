@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="Считает суммы">
+    <list default="true" id="30005535-7831-4820-8675-38ea7d24ae25" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Modules/modules.php" afterPath="$PROJECT_DIR$/classes/Modules/modules.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/Modules/tableArray.php" afterPath="$PROJECT_DIR$/classes/Modules/tableArray.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/runClass.php" afterPath="$PROJECT_DIR$/classes/runClass.php" />
     </list>
     <ignored path="dbProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -362,7 +359,7 @@
       <workItem from="1472471963741" duration="2575000" />
       <workItem from="1472533464125" duration="14050000" />
       <workItem from="1472622980346" duration="16408000" />
-      <workItem from="1472793395931" duration="5159000" />
+      <workItem from="1472793395931" duration="5187000" />
     </task>
     <task id="LOCAL-00001" summary="Проверка">
       <created>1463747367082</created>
@@ -469,11 +466,18 @@
       <option name="project" value="LOCAL" />
       <updated>1472640618171</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Неполучается таблица">
+      <created>1472798642252</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1472798642252</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107321000" />
+    <option name="totallyTimeSpent" value="107349000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -524,7 +528,8 @@
     <MESSAGE value="Проверка с новой точки" />
     <MESSAGE value="Подгон к новой точке" />
     <MESSAGE value="Считает суммы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Считает суммы" />
+    <MESSAGE value="Неполучается таблица" />
+    <option name="LAST_COMMIT_MESSAGE" value="Неполучается таблица" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
