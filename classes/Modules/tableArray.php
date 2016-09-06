@@ -50,12 +50,7 @@ class tableArray
         $this->getDefaultArray();
       //  print_r($this->_arrayDefaultValues["ORDER_CATEGORY"]['default'] ['previousValue'] );
         $this->printRows();
-foreach ($this->_arrayDefaultValues as $key =>$value){
-    echo "$key:    ";
-    print_r($value);
-    echo"<br>";
-}
-      /*  echo "<br>_________________________________________________________________________________________________________<BR>";
+ /*  echo "<br>_________________________________________________________________________________________________________<BR>";
         echo"<br>________________________________________________________________________________________________________<br>";
         $this->printRows();
         $i=1;
@@ -67,6 +62,13 @@ foreach ($this->_arrayDefaultValues as $key =>$value){
             }else echo "$i: Сравниваем $key не равен ORDER_CATEGORY <br>";
             $i++;
         }*/
+        echo key($this->_arrayDefaultValues["ORDER_CATEGORY"])."<br>______________________________________________________________________________________________________<br>";
+        foreach ($this->_arrayDefaultValues as $key =>$value){
+            echo "$key:    ";
+            print_r($value);
+            echo"<br>";
+        }
+
 
     }
 
@@ -137,7 +139,6 @@ foreach ($this->_arrayDefaultValues as $key =>$value){
            if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
                $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
               // return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-
               } else {
                  $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
                //return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
@@ -174,8 +175,12 @@ foreach ($this->_arrayDefaultValues as $key =>$value){
         foreach ($content as $key => $value) {
             $contentArray[$key] = $value;
         }
-        $tmpArray[$columnName ]=[$cell => $contentArray];
-        array_push($this->_arrayDefaultValues,$tmpArray);
+        echo "$cell =>";
+        echo"<br>\---------------------------------------------------------------------------------\<br>";
+        $this->_arrayDefaultValues[$columnName]=[$cell => $contentArray];
+        print_r($this->_arrayDefaultValues);
+        //$tmpArray[$columnName ]=[$cell => $contentArray];
+        //array_push($this->_arrayDefaultValues,$tmpArray);
     }
     private function getUniqContent(){
         foreach ($this->_headers as $key) {
