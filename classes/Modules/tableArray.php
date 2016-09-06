@@ -48,26 +48,13 @@ class tableArray
     public function test()
     {
         $this->getDefaultArray();
-      //  print_r($this->_arrayDefaultValues["ORDER_CATEGORY"]['default'] ['previousValue'] );
-        $this->printRows();
- /*  echo "<br>_________________________________________________________________________________________________________<BR>";
-        echo"<br>________________________________________________________________________________________________________<br>";
-        $this->printRows();
-        $i=1;
-        foreach ($this->_arrayDefaultValues as $key => $value) {
-                 echo "$i: Сравниваем $key и ORDER_CATEGORY    --- ";
-            if ($key == 'ORDER_CATEGORY') {
-                print_r($value);
-                echo "<br>";
-            }else echo "$i: Сравниваем $key не равен ORDER_CATEGORY <br>";
-            $i++;
-        }*/
-        echo key($this->_arrayDefaultValues["ORDER_CATEGORY"])."<br>______________________________________________________________________________________________________<br>";
+        $this->printTable($this->_res);
+       /* $this->printRows();
         foreach ($this->_arrayDefaultValues as $key =>$value){
             echo "$key:    ";
             print_r($value);
             echo"<br>";
-        }
+       } */
 
 
     }
@@ -90,9 +77,9 @@ class tableArray
     private function printRows()
     {
         foreach ($this->_res as $key => $value) {
-           // echo "<tr>";
-            /*echo*/ $this->parceRow($value);
-            //echo "</tr>";
+            echo "<tr>";
+            echo $this->parceRow($value);
+            echo "</tr>";
             $this->_countRow++;
         }
 
@@ -103,11 +90,10 @@ class tableArray
         foreach ($row as $cell => $key) {
             $keyCell = array_search($key, $row);
             if (in_array($keyCell, $this->_arrayFilteredColumns)) {
-                $this->checkRepeat($keyCell,$row);
-               // $stringTr=$stringTr.$this->checkRepeat($keyCell, $row);
-           } //else $stringTr=$stringTr."<td>".$key."</td>";
+                               $stringTr=$stringTr.$this->checkRepeat($keyCell, $row);
+           } else $stringTr=$stringTr."<td>".$key."</td>";
         }
-       //return $stringTr;
+       return $stringTr;
     }
     private function checkRepeat($columnName, $row)
     {
@@ -115,11 +101,11 @@ class tableArray
         $previousColumn = $this->getPreviousCount($columnName);
         $previousKey = $row[$previousColumn];
         if ($key != key($this->_arrayDefaultValues[$columnName])) {
-            /*return */$this->countRepeats($columnName, $row);
+                        return $this->countRepeats($columnName, $row);
         } else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
-          /* return */$this->countRepeats($columnName, $row);
+                   return $this->countRepeats($columnName, $row);
         }
-        //else return'';
+        else return'';
     }
     private function countRepeats($columnName, $row)
     {
@@ -137,11 +123,12 @@ class tableArray
                 }
             }
            if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
-               $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
-              // return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+                         $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
+
+               return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
               } else {
                  $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
-               //return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+               return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
 
                }
 
@@ -175,12 +162,8 @@ class tableArray
         foreach ($content as $key => $value) {
             $contentArray[$key] = $value;
         }
-        echo "$cell =>";
-        echo"<br>\---------------------------------------------------------------------------------\<br>";
         $this->_arrayDefaultValues[$columnName]=[$cell => $contentArray];
-        print_r($this->_arrayDefaultValues);
-        //$tmpArray[$columnName ]=[$cell => $contentArray];
-        //array_push($this->_arrayDefaultValues,$tmpArray);
+
     }
     private function getUniqContent(){
         foreach ($this->_headers as $key) {
