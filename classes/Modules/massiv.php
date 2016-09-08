@@ -2,11 +2,11 @@
 
 /**
  * Created by PhpStorm.
- * User: Sergey
- * Date: 02.08.2016
- * Time: 10:04
+ * User: Admindb
+ * Date: 08.09.2016
+ * Time: 8:46
  */
-class tableArray
+class massiv
 {
     private $_res;
     private $_query;
@@ -28,14 +28,16 @@ class tableArray
         preg_match_all('/\"(.*?)\"/sei', $this->_query, $matches);
         return $matches[1];
     }
+
     private function getContentArray()
     {
 
         $content["count"] = 0;
-        $content["previousValue"] = 0;
-        $uniqContent=$this->getUniqContent();
-        return $contentarr = ['default' => array_merge($content,$uniqContent)];
+        $content["previousValue"] = 'default';
+        $uniqContent = $this->getUniqContent();
+        return $contentarr[0] = ['default' => array_merge($content, $uniqContent)];
     }
+
     private function getDefaultArray()
     {
 
@@ -48,15 +50,17 @@ class tableArray
     public function test()
     {
         $this->getDefaultArray();
-        $this->printTable($this->_res);
+        $this->printRows();
         echo '<br>____________________________________________________________________________________________<br>';
-               foreach ($this->_arrayDefaultValues as $key =>$value){
-            echo "$key:    ";
-            print_r($value);
-            echo"<br>";
-       }
-
-
+        foreach ($this->_arrayDefaultValues as $key => $value) {
+            if (key($value) == "CURRENCY") {
+                $tmp=$value[key($value)];
+                if(key($tmp)=="VISA"){
+                print_r($value);
+                echo'<br>';
+            }
+        }
+    }
     }
 
     private function printTable($res)
@@ -74,73 +78,93 @@ class tableArray
 
         echo "</table>";
     }
+
     private function printRows()
     {
         foreach ($this->_res as $key => $value) {
-            echo "<tr>";
-            echo $this->parceRow($value);
-            echo "</tr>";
+            // echo "<tr>";
+            $this->parceRow($value);
+            // echo "</tr>";
             $this->_countRow++;
         }
 
     }
+
     private function parceRow($row)
     {
-        $stringTr = null;
+        // $stringTr = null;
         foreach ($row as $cell => $key) {
             $keyCell = array_search($key, $row);
             if (in_array($keyCell, $this->_arrayFilteredColumns)) {
-                               $stringTr=$stringTr.$this->checkRepeat($keyCell, $row);
-           } else $stringTr=$stringTr."<td>".$key."</td>";
+                $this->checkRepeat($keyCell, $row);
+            } //else $stringTr=$stringTr."<td>".$key."</td>";
         }
-       return $stringTr;
+        //return $stringTr;
+    }
+    private function getCheckedString($columnName,$cell,$previousCell){
+        foreach ($this->_arrayDefaultValues as $key => $value) {
+            if (key($value) == $columnName) {
+                $tmp=$value[key($value)];
+                if((key($tmp)==$cell) and ($tmp[$cell]["previousValue"]==$previousCell)){
+                     return $value;
+                }
+            }
+        }
     }
     private function checkRepeat($columnName, $row)
     {
         $key = $row[$columnName];
         $previousColumn = $this->getPreviousCount($columnName);
         $previousKey = $row[$previousColumn];
-        if ($key != key($this->_arrayDefaultValues[$columnName])) {
-                        return $this->countRepeats($columnName, $row);
-        } else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
-                   return $this->countRepeats($columnName, $row);
-        }
-        else return'';
+        $tmp=$this->getCheckedString($columnName,$key,$previousKey);
+        print_r($tmp);
+           if ($key != key($tmp[$columnName])) {
+        // if ($key != key($this->_arrayDefaultValues[$columnName])) {
+            return $this->countRepeats($columnName, $row);
+       } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
+               //} else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
+            return $this->countRepeats($columnName, $row);
+        } else return '';
     }
+
     private function countRepeats($columnName, $row)
     {
         $valueCell = $row[$columnName];
         $predColumn = $this->getPreviousCount($columnName);
         $predKey = $row[$predColumn];
         $count = 0;
-        $content=$this->getUniqContent();
-            for ($i = $this->_countRow; $i < count($this->_res); ++$i) {
-                if (($valueCell == $this->_res[$i][$columnName]) and ($predKey == $this->_res[$i][$predColumn])) {
-                    $content = $this->summCells($this->_res[$i],  $content);
-                    $count++;
-                } else {
-                    break;
-                }
+        $content = $this->getUniqContent();
+        for ($i = $this->_countRow; $i < count($this->_res); ++$i) {
+            if (($valueCell == $this->_res[$i][$columnName]) and ($predKey == $this->_res[$i][$predColumn])) {
+                $content = $this->summCells($this->_res[$i], $content);
+                $count++;
+            } else {
+                break;
             }
-           if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
-                         $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
+        }
+        $tmp=$this->getCheckedString($columnName, $valueCell ,$predKey);
+       if (key($tmp[$columnName]) != 'default') {
+        //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
+            $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
 
-               return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-              } else {
-                 $this->fillContent($valueCell, $count, $predKey, $content,$columnName);
-               return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-
-               }
-
+         //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+        } else {
+            $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
+         //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
 
         }
+
+
+    }
+
     private function summCells($row, $content)
     {
-       foreach ($content as $key=>$value) {
-           $content[$key]=$value+$row[$key];
-       }
-          return $content;
+        foreach ($content as $key => $value) {
+            $content[$key] = $value + $row[$key];
+        }
+        return $content;
     }
+
     private function getPreviousCount($columnName)
     {
         $index = $columnName;
@@ -154,23 +178,27 @@ class tableArray
         }
         return $index;
     }
+
     private function fillContent($cell, $count, $previousValue, $content, $columnName)
     {
-
+        $tmp = null;
         $contentArray["count"] = $count;
         $contentArray["previousValue"] = $previousValue;
         foreach ($content as $key => $value) {
             $contentArray[$key] = $value;
         }
-        $this->_arrayDefaultValues[$columnName]=[$cell => $contentArray];
+        $tmp[$columnName] = [$cell => $contentArray];
+        array_push($this->_arrayDefaultValues, $tmp);
 
     }
-    private function getUniqContent(){
+
+    private function getUniqContent()
+    {
         foreach ($this->_headers as $key) {
             if (!(in_array($key, $this->_arrayFilteredColumns))) {
                 $content[$key] = 0;
             }
         }
-    return $content;
+        return $content;
     }
 }
