@@ -51,16 +51,12 @@ class massiv
     {
         $this->getDefaultArray();
         $this->printRows();
-        echo '<br>____________________________________________________________________________________________<br>';
+       echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         foreach ($this->_arrayDefaultValues as $key => $value) {
-            if (key($value) == "CURRENCY") {
-                $tmp=$value[key($value)];
-                if(key($tmp)=="VISA"){
-                print_r($value);
-                echo'<br>';
-            }
+            echo "$key: ";
+            print_r($value);
+            echo"<br>________________________________________________________________________________________<br>";
         }
-    }
     }
 
     private function printTable($res)
@@ -102,11 +98,14 @@ class massiv
         //return $stringTr;
     }
     private function getCheckedString($columnName,$cell,$previousCell){
+
         foreach ($this->_arrayDefaultValues as $key => $value) {
             if (key($value) == $columnName) {
                 $tmp=$value[key($value)];
+
                 if((key($tmp)==$cell) and ($tmp[$cell]["previousValue"]==$previousCell)){
-                     return $value;
+
+                    return $value;
                 }
             }
         }
@@ -117,8 +116,7 @@ class massiv
         $previousColumn = $this->getPreviousCount($columnName);
         $previousKey = $row[$previousColumn];
         $tmp=$this->getCheckedString($columnName,$key,$previousKey);
-        print_r($tmp);
-           if ($key != key($tmp[$columnName])) {
+            if (($tmp==null) or ($key != key($tmp[$columnName]))) {
         // if ($key != key($this->_arrayDefaultValues[$columnName])) {
             return $this->countRepeats($columnName, $row);
        } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
@@ -143,13 +141,13 @@ class massiv
             }
         }
         $tmp=$this->getCheckedString($columnName, $valueCell ,$predKey);
-       if (key($tmp[$columnName]) != 'default') {
+       if (($tmp==null) or (key($tmp[$columnName]) != 'default')) {
         //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
             $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
 
          //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
         } else {
-            $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
+          //  $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
          //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
 
         }
@@ -189,6 +187,7 @@ class massiv
         }
         $tmp[$columnName] = [$cell => $contentArray];
         array_push($this->_arrayDefaultValues, $tmp);
+
 
     }
 
