@@ -55,7 +55,7 @@ $res=$con->getResult($query);
 require './Modules/modules.php';
 require './Modules/tableArray.php';
 require './Modules/massiv.php';
-//$modul= new Modules($res,$query);
+////$modul= new Modules($res,$query);
 //$modul= new tableArray($res,$query);
 $modul= new massiv($res,$query);
 $modul->test();

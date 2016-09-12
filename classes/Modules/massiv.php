@@ -52,17 +52,18 @@ class massiv
         $this->getDefaultArray();
         $this->printRows();
         echo 'Начинаем <br>____________________________________________________________________________________________<br>';
+        echo '<br>';
         for ($i = 0; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-            echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva(key($this->_arrayDefaultValues[$i]), $i);
+           echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
 
             echo '<br>';
         }
-
+//echo key($this->_arrayDefaultValues[1]) . ': ' . $this->pereborMassiva(1);
         echo "<br>________________________________________________________________________________________<br>";
 
         foreach ($this->_arrayDefaultValues as $key => $value) {
             echo "$key: ";
-            print_r($value);
+            print_r(key($value));
             echo "<br>";
         }
     }
@@ -83,16 +84,40 @@ class massiv
         echo "</table>";
     }
 
-    private function pereborMassiva($columnName, $i)
+    private function pereborMassiva($i,$columnName)
     {
-        $count = 1;
+       // $columnName=end($this->_arrayFilteredColumns);
+        $count = 0;
         $repeats = 0;
         for ($i; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-        if (($repeats > 1) or ($i == (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns))-1) ) return $count;
-        else {
-            if (($columnName != key($this->_arrayDefaultValues[$i]))) $count++;
+          //  echo "$i: ".$columnName."  ".key($this->_arrayDefaultValues[$i])."<br>";
+            if (($repeats > 1) or ($this->reverceMathod($columnName,key($this->_arrayDefaultValues[$i]))==true))  break;
+            else {
+                if (($columnName != key($this->_arrayDefaultValues[$i]))) $count++;
                 else $repeats++;
             }
+        }
+        return $count;
+    }
+
+    private function reverceMathod($columnName,$previous)
+    {
+     $result=false;
+        $index=array_search($columnName,$this->_arrayFilteredColumns);
+        $previousIndex=array_search($previous,$this->_arrayFilteredColumns);
+        if ($previousIndex<$index) $result=true;
+     return $result;
+    }
+
+    private function columnRepeats($i)
+    {
+        $lastColumn = end($this->_arrayFilteredColumns);
+        $count = 0;
+        for ($i; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
+            if ($lastColumn == key($this->_arrayDefaultValues[$i])) $count++;
+            else return $count;
+
+
         }
     }
 
