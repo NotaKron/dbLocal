@@ -51,11 +51,19 @@ class massiv
     {
         $this->getDefaultArray();
         $this->printRows();
-       echo 'Начинаем <br>____________________________________________________________________________________________<br>';
+        echo 'Начинаем <br>____________________________________________________________________________________________<br>';
+        for ($i = 0; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
+            echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva(key($this->_arrayDefaultValues[$i]), $i);
+
+            echo '<br>';
+        }
+
+        echo "<br>________________________________________________________________________________________<br>";
+
         foreach ($this->_arrayDefaultValues as $key => $value) {
             echo "$key: ";
             print_r($value);
-            echo"<br>________________________________________________________________________________________<br>";
+            echo "<br>";
         }
     }
 
@@ -73,6 +81,19 @@ class massiv
         $this->printRows();
 
         echo "</table>";
+    }
+
+    private function pereborMassiva($columnName, $i)
+    {
+        $count = 1;
+        $repeats = 0;
+        for ($i; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
+        if (($repeats > 1) or ($i == (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns))-1) ) return $count;
+        else {
+            if (($columnName != key($this->_arrayDefaultValues[$i]))) $count++;
+                else $repeats++;
+            }
+        }
     }
 
     private function printRows()
@@ -97,30 +118,33 @@ class massiv
         }
         //return $stringTr;
     }
-    private function getCheckedString($columnName,$cell,$previousCell){
+
+    private function getCheckedString($columnName, $cell, $previousCell)
+    {
 
         foreach ($this->_arrayDefaultValues as $key => $value) {
             if (key($value) == $columnName) {
-                $tmp=$value[key($value)];
+                $tmp = $value[key($value)];
 
-                if((key($tmp)==$cell) and ($tmp[$cell]["previousValue"]==$previousCell)){
+                if ((key($tmp) == $cell) and ($tmp[$cell]["previousValue"] == $previousCell)) {
 
                     return $value;
                 }
             }
         }
     }
+
     private function checkRepeat($columnName, $row)
     {
         $key = $row[$columnName];
         $previousColumn = $this->getPreviousCount($columnName);
         $previousKey = $row[$previousColumn];
-        $tmp=$this->getCheckedString($columnName,$key,$previousKey);
-            if (($tmp==null) or ($key != key($tmp[$columnName]))) {
-        // if ($key != key($this->_arrayDefaultValues[$columnName])) {
+        $tmp = $this->getCheckedString($columnName, $key, $previousKey);
+        if (($tmp == null) or ($key != key($tmp[$columnName]))) {
+            // if ($key != key($this->_arrayDefaultValues[$columnName])) {
             return $this->countRepeats($columnName, $row);
-       } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
-               //} else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
+        } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
+            //} else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
             return $this->countRepeats($columnName, $row);
         } else return '';
     }
@@ -140,15 +164,15 @@ class massiv
                 break;
             }
         }
-        $tmp=$this->getCheckedString($columnName, $valueCell ,$predKey);
-       if (($tmp==null) or (key($tmp[$columnName]) != 'default')) {
-        //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
+        $tmp = $this->getCheckedString($columnName, $valueCell, $predKey);
+        if (($tmp == null) or (key($tmp[$columnName]) != 'default')) {
+            //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
             $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
 
-         //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+            //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
         } else {
-          //  $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
-         //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
+            //  $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
+            //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
 
         }
 
