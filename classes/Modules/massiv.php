@@ -51,23 +51,23 @@ class massiv
     {
         $this->getDefaultArray();
         $this->printRows();
-                echo 'Начинаем <br>____________________________________________________________________________________________<br>';
-        echo '<br>';
-        for ($i = 0; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-            $columnName=key($this->_arrayDefaultValues[$i]);
-            $cellValue=key($this->_arrayDefaultValues[$i][$columnName]);
-           // echo"$columnName => $cellValue => ".$this->_arrayDefaultValues[$i][$columnName][$cellValue]['count']." <br>";
-            $count= $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'];
-            $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count']=$count+$this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
-            echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
-            echo '<br>';
-        }
+        echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         echo "<br>________________________________________________________________________________________<br>";
-
+        $this->countedArrayDefault();
         foreach ($this->_arrayDefaultValues as $key => $value) {
             echo "$key: ";
             print_r($value);
             echo "<br>";
+        }
+    }
+
+    private function countedArrayDefault()
+    {
+        for ($i = 0; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
+            $columnName = key($this->_arrayDefaultValues[$i]);
+            $cellValue = key($this->_arrayDefaultValues[$i][$columnName]);
+            $count = $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'];
+            $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'] = $count + $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
         }
     }
 

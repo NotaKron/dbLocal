@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2720">
-              <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+            <state relative-caret-position="476">
+              <caret line="217" column="18" selection-start-line="217" selection-start-column="18" selection-end-line="217" selection-end-column="18" />
               <folding>
                 <element signature="n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -90,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="massiv.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="massiv.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/Modules/massiv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="58" column="97" selection-start-line="58" selection-start-column="97" selection-end-line="58" selection-end-column="97" />
+            <state relative-caret-position="191">
+              <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
               <folding>
                 <element signature="n#__construct#0;n#massiv#0;n#!!top" expanded="false" />
                 <element signature="n#getFilteredColumnsArray#0;n#massiv#0;n#!!top" expanded="false" />
@@ -109,7 +109,7 @@
                 <element signature="n#summCells#0;n#massiv#0;n#!!top" expanded="false" />
                 <element signature="n#fillContent#0;n#massiv#0;n#!!top" expanded="false" />
                 <element signature="n#getUniqContent#0;n#massiv#0;n#!!top" expanded="false" />
-                <marker date="1473748640429" expanded="true" signature="2587:2717" ph="..." />
+                <marker date="1473750955044" expanded="true" signature="2385:2515" ph="..." />
               </folding>
             </state>
           </provider>
@@ -369,7 +369,7 @@
       <workItem from="1473339530571" duration="2993000" />
       <workItem from="1473397575416" duration="10583000" />
       <workItem from="1473658140225" duration="18214000" />
-      <workItem from="1473747335840" duration="1339000" />
+      <workItem from="1473747335840" duration="3453000" />
     </task>
     <task id="LOCAL-00001" summary="Проверка">
       <created>1463747367082</created>
@@ -553,11 +553,18 @@
       <option name="project" value="LOCAL" />
       <updated>1473690453133</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Правильный подсчет повторений">
+      <created>1473748697440</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1473748697440</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163860000" />
+    <option name="totallyTimeSpent" value="165974000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -610,7 +617,8 @@
     <MESSAGE value="Считает суммы" />
     <MESSAGE value="Неполучается таблица" />
     <MESSAGE value="Переделал таблицу" />
-    <option name="LAST_COMMIT_MESSAGE" value="Переделал таблицу" />
+    <MESSAGE value="Правильный подсчет повторений" />
+    <option name="LAST_COMMIT_MESSAGE" value="Правильный подсчет повторений" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1130,10 +1138,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/classes/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="217" column="18" selection-start-line="217" selection-start-column="18" selection-end-line="217" selection-end-column="18" />
+          <folding>
+            <element signature="n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/Modules/massiv.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="58" column="97" selection-start-line="58" selection-start-column="97" selection-end-line="58" selection-end-column="97" />
+        <state relative-caret-position="191">
+          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
           <folding>
             <element signature="n#__construct#0;n#massiv#0;n#!!top" expanded="false" />
             <element signature="n#getFilteredColumnsArray#0;n#massiv#0;n#!!top" expanded="false" />
@@ -1148,17 +1166,7 @@
             <element signature="n#summCells#0;n#massiv#0;n#!!top" expanded="false" />
             <element signature="n#fillContent#0;n#massiv#0;n#!!top" expanded="false" />
             <element signature="n#getUniqContent#0;n#massiv#0;n#!!top" expanded="false" />
-            <marker date="1473748640429" expanded="true" signature="2587:2717" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2720">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-          <folding>
-            <element signature="n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1473750955044" expanded="true" signature="2385:2515" ph="..." />
           </folding>
         </state>
       </provider>
