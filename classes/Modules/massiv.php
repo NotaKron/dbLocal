@@ -51,19 +51,22 @@ class massiv
     {
         $this->getDefaultArray();
         $this->printRows();
-        echo 'Начинаем <br>____________________________________________________________________________________________<br>';
+                echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         echo '<br>';
         for ($i = 0; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-           echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
-
+            $columnName=key($this->_arrayDefaultValues[$i]);
+            $cellValue=key($this->_arrayDefaultValues[$i][$columnName]);
+           // echo"$columnName => $cellValue => ".$this->_arrayDefaultValues[$i][$columnName][$cellValue]['count']." <br>";
+            $count= $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'];
+            $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count']=$count+$this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
+            echo key($this->_arrayDefaultValues[$i]) . ': ' . $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
             echo '<br>';
         }
-//echo key($this->_arrayDefaultValues[1]) . ': ' . $this->pereborMassiva(1);
         echo "<br>________________________________________________________________________________________<br>";
 
         foreach ($this->_arrayDefaultValues as $key => $value) {
             echo "$key: ";
-            print_r(key($value));
+            print_r($value);
             echo "<br>";
         }
     }
@@ -84,14 +87,14 @@ class massiv
         echo "</table>";
     }
 
-    private function pereborMassiva($i,$columnName)
+    private function pereborMassiva($i, $columnName)
     {
-       // $columnName=end($this->_arrayFilteredColumns);
+        // $columnName=end($this->_arrayFilteredColumns);
         $count = 0;
         $repeats = 0;
         for ($i; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-          //  echo "$i: ".$columnName."  ".key($this->_arrayDefaultValues[$i])."<br>";
-            if (($repeats > 1) or ($this->reverceMathod($columnName,key($this->_arrayDefaultValues[$i]))==true))  break;
+            //  echo "$i: ".$columnName."  ".key($this->_arrayDefaultValues[$i])."<br>";
+            if (($repeats > 1) or ($this->reverceMathod($columnName, key($this->_arrayDefaultValues[$i])) == true)) break;
             else {
                 if (($columnName != key($this->_arrayDefaultValues[$i]))) $count++;
                 else $repeats++;
@@ -100,13 +103,13 @@ class massiv
         return $count;
     }
 
-    private function reverceMathod($columnName,$previous)
+    private function reverceMathod($columnName, $previous)
     {
-     $result=false;
-        $index=array_search($columnName,$this->_arrayFilteredColumns);
-        $previousIndex=array_search($previous,$this->_arrayFilteredColumns);
-        if ($previousIndex<$index) $result=true;
-     return $result;
+        $result = false;
+        $index = array_search($columnName, $this->_arrayFilteredColumns);
+        $previousIndex = array_search($previous, $this->_arrayFilteredColumns);
+        if ($previousIndex < $index) $result = true;
+        return $result;
     }
 
     private function columnRepeats($i)
