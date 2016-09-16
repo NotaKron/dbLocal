@@ -50,15 +50,11 @@ class massiv
     public function test()
     {
         $this->getDefaultArray();
-        $this->printRows();
+        $this->countedRows();
         echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         echo "<br>________________________________________________________________________________________<br>";
-        $this->countedArrayDefault();
-        foreach ($this->_arrayDefaultValues as $key => $value) {
-            echo "$key: ";
-            print_r($value);
-            echo "<br>";
-        }
+        //$this->onMassive();
+        echo key($this->filterArray('ORDER_CATEGORY')).": ";print_r($this->filterArray('ORDER_CATEGORY'));Echo"<br>";
     }
 
     private function countedArrayDefault()
@@ -69,22 +65,6 @@ class massiv
             $count = $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'];
             $this->_arrayDefaultValues[$i][$columnName][$cellValue]['count'] = $count + $this->pereborMassiva($i, key($this->_arrayDefaultValues[$i]));
         }
-    }
-
-    private function printTable($res)
-    {
-        echo '<table cellpadding="5" cellspacing="0" border="1">';
-        echo '<tr>';
-        $_tmp = $res[0];
-        $_tmpkey = array_keys($_tmp);
-        foreach ($_tmpkey as $key => $value) {
-            echo "<th> $value</th>";
-        }
-        echo '</tr>';
-
-        $this->printRows();
-
-        echo "</table>";
     }
 
     private function pereborMassiva($i, $columnName)
@@ -112,24 +92,76 @@ class massiv
         return $result;
     }
 
-    private function columnRepeats($i)
+
+    private function printTable($res)
     {
-        $lastColumn = end($this->_arrayFilteredColumns);
-        $count = 0;
-        for ($i; $i < (count($this->_arrayDefaultValues) - count($this->_arrayFilteredColumns)); $i++) {
-            if ($lastColumn == key($this->_arrayDefaultValues[$i])) $count++;
-            else return $count;
-
-
+        echo '<table cellpadding="5" cellspacing="0" border="1">';
+        echo '<tr>';
+        $_tmp = $res[0];
+        $_tmpkey = array_keys($_tmp);
+        foreach ($_tmpkey as $key => $value) {
+            echo "<th> $value</th>";
         }
+        echo '</tr>';
+
+        $this->countedRows();
+        $this->_countRow = 0;
+        $this->printRows();
+
+        echo "</table>";
     }
 
     private function printRows()
     {
         foreach ($this->_res as $key => $value) {
-            // echo "<tr>";
+            echo "<tr>";
+            echo $this->drawCells($value);
+            echo "</tr>";
+            $this->_countRow++;
+        }
+    }
+
+    private function drawCells($row)
+    {
+        $stringTr = null;
+        foreach ($row as $cell => $key) {
+            $keyCell = array_search($key, $row);
+            if (in_array($keyCell, $this->_arrayFilteredColumns)) {
+                $stringTr = $stringTr . $this->getRowString($keyCell, $row);
+            } else $stringTr = $stringTr . "<td>" . $key . "</td>";
+        }
+        return $stringTr;
+    }
+
+    private function getCellsCount($columnName, $value)
+    {
+        foreach ($this->_arrayDefaultValues as $row => $column) {
+            if (key($column) == $columnName)
+                foreach ($column as $cells) {
+                    if ($value == key($cells)) return "<td valign='top' rowspan=\"" . $cells[key($cells)]['count'] . "\">$value</td>";
+                }
+        }
+    }
+
+    private function getRowString($columnName, $row)
+    {
+        $key = $row[$columnName];
+        $previousColumn = $this->getPreviousCount($columnName);
+        $previousKey = $row[$previousColumn];
+        $tmp = $this->getCheckedString($columnName, $key, $previousKey);
+        if (($tmp == null) or ($key != key($tmp[$columnName]))) {
+            return $this->getCellsCount($columnName, $key);;
+        } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
+            return $this->getCellsCount($columnName, $key);;
+        } else return '';
+
+    }
+
+
+    private function countedRows()
+    {
+        foreach ($this->_res as $key => $value) {
             $this->parceRow($value);
-            // echo "</tr>";
             $this->_countRow++;
         }
 
@@ -137,14 +169,12 @@ class massiv
 
     private function parceRow($row)
     {
-        // $stringTr = null;
         foreach ($row as $cell => $key) {
             $keyCell = array_search($key, $row);
             if (in_array($keyCell, $this->_arrayFilteredColumns)) {
                 $this->checkRepeat($keyCell, $row);
-            } //else $stringTr=$stringTr."<td>".$key."</td>";
+            }
         }
-        //return $stringTr;
     }
 
     private function getCheckedString($columnName, $cell, $previousCell)
@@ -169,10 +199,8 @@ class massiv
         $previousKey = $row[$previousColumn];
         $tmp = $this->getCheckedString($columnName, $key, $previousKey);
         if (($tmp == null) or ($key != key($tmp[$columnName]))) {
-            // if ($key != key($this->_arrayDefaultValues[$columnName])) {
             return $this->countRepeats($columnName, $row);
         } else if ($previousKey != $tmp[$columnName][$key]['previousValue']) {
-            //} else if ($previousKey != $this->_arrayDefaultValues[$columnName][$key]['previousValue']) {
             return $this->countRepeats($columnName, $row);
         } else return '';
     }
@@ -194,17 +222,8 @@ class massiv
         }
         $tmp = $this->getCheckedString($columnName, $valueCell, $predKey);
         if (($tmp == null) or (key($tmp[$columnName]) != 'default')) {
-            //  if (key($this->_arrayDefaultValues[$columnName]) != 'default') {
             $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
-
-            //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-        } else {
-            //  $this->fillContent($valueCell, $count, $predKey, $content, $columnName);
-            //   return "<td valign='top' rowspan=\"$count\">$valueCell </td>";
-
         }
-
-
     }
 
     private function summCells($row, $content)
@@ -252,4 +271,34 @@ class massiv
         }
         return $content;
     }
+
+    private function onMassive()
+    {
+        for ($i = 0; $i < count($this->_res); ++$i) {
+            foreach ($this->_res[$i] as $key => $value) {
+                $this->checkOnMassiv($i, $key);
+            }
+            echo "<br>";
+        }
+    }
+
+    private function checkOnMassiv($i, $columnName)
+    {
+        echo "$columnName <br>";
+        if (in_array($columnName, $this->_arrayFilteredColumns)) {
+            print_r($this->_arrayDefaultValues[$columnName]);
+        }
+    }
+public function filterArray($var){
+
+    foreach ($this->_arrayDefaultValues as $value){
+        if(key($value)==$var){
+            $cell= key($value[$var]);
+            $tmp[]=$value[$var][$cell]['count'] ;
+            //       array_push($array,[$value[$var][$cell]['count']]);
+        }
+    }
+    return $array=[$var=>$tmp];
+}
+
 }

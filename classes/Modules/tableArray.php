@@ -51,8 +51,7 @@ class tableArray
         $this->printTable($this->_res);
         echo '<br>____________________________________________________________________________________________<br>';
                foreach ($this->_arrayDefaultValues as $key =>$value){
-            echo "$key:    ";
-            print_r($value);
+                       print_r($value);
             echo"<br>";
        }
 
