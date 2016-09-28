@@ -53,8 +53,7 @@ class massiv
         $this->countedRows();
         echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         echo "<br>________________________________________________________________________________________<br>";
-        //$this->onMassive();
-        echo key($this->filterArray('ORDER_CATEGORY')).": ";print_r($this->filterArray('ORDER_CATEGORY'));Echo"<br>";
+        $this->getNextRowspan(0, 'ORDER_CATEGORY');
     }
 
     private function countedArrayDefault()
@@ -286,19 +285,37 @@ class massiv
     {
         echo "$columnName <br>";
         if (in_array($columnName, $this->_arrayFilteredColumns)) {
-            print_r($this->_arrayDefaultValues[$columnName]);
+            $this->getNextRowspan($i, $columnName);
         }
     }
-public function filterArray($var){
 
-    foreach ($this->_arrayDefaultValues as $value){
-        if(key($value)==$var){
-            $cell= key($value[$var]);
-            $tmp[]=$value[$var][$cell]['count'] ;
-            //       array_push($array,[$value[$var][$cell]['count']]);
+    private function filterValueArray($var)
+    {
+        foreach ($this->_arrayDefaultValues as $value) {
+            if (key($value) == $var) {
+                $cell = key($value[$var]);
+                $tmp[] = $value[$var][$cell]['count'];
+            }
         }
+        return $array = [$var => $tmp];
     }
-    return $array=[$var=>$tmp];
-}
 
+    private function getCountArray()
+    {
+        $countArray[] = [0 => 0];
+        foreach ($this->_arrayFilteredColumns as $value) {
+            $countArray[] = $this->filterValueArray($value);
+        }
+        return $countArray;
+    }
+
+    private function getNextRowspan($i, $columnName)
+    {
+        $arrayValueCount = $this->getCountArray();
+        foreach ($arrayValueCount as $key => $value) {
+            if (key($value) == $columnName) $tmp = $value;
+        }
+        print_r($tmp);
+        if (in_array($i, array_values($tmp[$columnName]))) echo next($tmp[$columnName]);
+    }
 }
