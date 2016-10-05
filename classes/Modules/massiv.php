@@ -49,13 +49,17 @@ class massiv
 
     public function test()
     {
+
+        //
         $this->getDefaultArray();
-        $this->countedRows();
+       // $this->printTable($this->_res);
+       $this->countedRows();
         $tmp = $this->getCountArray();
         echo 'Начинаем <br>____________________________________________________________________________________________<br>';
         echo "<br>________________________________________________________________________________________<br>";
-        //  $this->getNextRowspan(83, 'ORDER_CATEGORY');
+        // $this->getNextRowspan(83, 'ORDER_CATEGORY');
         $this->goOnArray();
+      //  $this->printRows();
         echo "<br>________________________________________________________________________________________<br>";
 
         foreach ($tmp as $key) {
@@ -113,7 +117,7 @@ class massiv
 
         $this->countedRows();
         $this->_countRow = 0;
-        $this->printRows();
+        $this->goOnArray();
 
         echo "</table>";
     }
@@ -121,10 +125,12 @@ class massiv
     private function printRows()
     {
         foreach ($this->_res as $key => $value) {
-            echo "<tr>";
-            echo $this->drawCells($value);
-            echo "</tr>";
-            $this->_countRow++;
+            // echo "<tr>";
+            echo key($value).":  ";
+            print_r($value);
+            echo "<br>";
+            //  echo "</tr>";
+            //$this->_countRow++;
         }
     }
 
@@ -317,7 +323,7 @@ class massiv
         return $countArray;
     }
 
-    private function getNextRowspan($i, $columnName,$iter)
+    private function getNextRowspan($i, $columnName, $iter)
     {
         $arrayValueCount = $this->getCountArray();
         foreach ($arrayValueCount as $key => $value) {
@@ -326,17 +332,17 @@ class massiv
         if ($i == 0) {
             return array_shift($tmp[$columnName]);
         }
-        if($iter==count($tmp[$columnName])-1) return null;
-        for ($count=$iter; $count<count($tmp[$columnName]);$count++){
-            if($i==$tmp[$columnName][$count]) return $tmp[$columnName][$count+1];
-    }
+        if ($iter == count($tmp[$columnName]) - 1) return null;
+        for ($count = $iter; $count < count($tmp[$columnName]); $count++) {
+            if ($i == $tmp[$columnName][$count]) return $tmp[$columnName][$count + 1];
+        }
     }
 
 
     private function getTmpArray()
     {
         foreach ($this->_arrayFilteredColumns as $key) {
-            $tmp[$key] = ["rowCount" => 0, "summ" => 0,"iter"=>-1];
+            $tmp[$key] = ["rowCount" => 0, "summ" => 0, "iter" => -1];
         }
         return $tmp;
     }
@@ -344,19 +350,23 @@ class massiv
     private function goOnArray()
     {
         $tmp = $this->getTmpArray();
+        $tableString = null;
         foreach ($this->_res as $key => $value) {
+          //  echo"<tr>";
             foreach ($value as $columnName => $cell) {
-
                 if ((in_array($columnName, $this->_arrayFilteredColumns)) and ($tmp[$columnName]['summ'] == $key)) {
-                    $rowspan = $this->getNextRowspan($tmp[$columnName]['rowCount'], $columnName,$tmp[$columnName]['iter']);
-                //  echo"Send: ".$tmp[$columnName]['rowCount']."  Recive: $rowspan <br>";
+                    $rowspan = $this->getNextRowspan($tmp[$columnName]['rowCount'], $columnName, $tmp[$columnName]['iter']);
                     $tmp[$columnName]['summ'] += $rowspan;
                     $tmp[$columnName]['rowCount'] = $rowspan;
-                    $tmp[$columnName]['iter'] ++;
-                    if($columnName=='CURRENCY')
-                    echo "$key => $columnName:  Rowspan:=> $rowspan  Summ:=>> " . $tmp[$columnName]['summ'] . "<br>";
+                    $tmp[$columnName]['iter']++;
+                   //echo"<td valign='top' rowspan=$rowspan>$cell </td>";
+                     echo "$key => $columnName:  $cell || Rowspan:=> $rowspan  Summ:=>> " . $tmp[$columnName]['summ'] . "<br>";
+                } elseif (!(in_array($columnName, $this->_arrayFilteredColumns))) {
+                   // echo "$columnName";
+                //   echo "<td> $cell</td>";
                 }
             }
+          // echo"</tr>";
         }
     }
 }
