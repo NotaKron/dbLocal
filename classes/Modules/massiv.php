@@ -54,17 +54,19 @@ class massiv
         $this->getDefaultArray();
        // $this->printTable($this->_res);
        $this->countedRows();
-        $tmp = $this->getCountArray();
-        echo 'Начинаем <br>____________________________________________________________________________________________<br>';
-        echo "<br>________________________________________________________________________________________<br>";
-        // $this->getNextRowspan(83, 'ORDER_CATEGORY');
-        $this->goOnArray();
-      //  $this->printRows();
-        echo "<br>________________________________________________________________________________________<br>";
+        $tmp = $this->_arrayDefaultValues;
 
-        foreach ($tmp as $key) {
-            print_r($key);
-            echo "<br>";
+      //  echo 'Начинаем <br>____________________________________________________________________________________________<br>';
+       // echo "<br>________________________________________________________________________________________<br>";
+        // $this->getNextRowspan(83, 'ORDER_CATEGORY');
+      //  $this->goOnArray();
+      //  $this->printRows();
+      //  echo "<br>________________________________________________________________________________________<br>";
+
+       foreach ($tmp as $key) {
+
+         if(key($key)=="Cash") {print_r($key);
+            echo "<br>";}
         }
     }
 
